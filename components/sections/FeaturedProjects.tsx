@@ -90,6 +90,8 @@ export default function FeaturedProjects() {
                 }`}
               >
                 <Image
+                placeholder="empty"
+                loading="eager"
                   src={displayedImage}
                   alt={imageAlt}
                   width={800}
