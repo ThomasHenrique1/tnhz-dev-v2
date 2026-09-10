@@ -11,9 +11,9 @@ export const projects: Project[] = [
     description:
       "Aplicacao desenvolvida para facilitar a captacao e o gerenciamento de leads para venda e consultoria de planos de saude. O sistema automatiza a distribuicao entre corretores e inclui regras para redistribuicao de leads que nao recebem atendimento.",
 
-    cover: "/projects/sistema-de-leads/cover.png",
+    cover: "/projects/sistema-de-leads/logo.png",
     logo: "/projects/sistema-de-leads/logo.png",
-    preview: "/projects/sistema-de-leads/preview.png",
+    preview: "/projects/sistema-de-leads/logo.png",
     color: "#2563eb",
 
     technologies: ["Next.js", "React", "TypeScript", "Supabase"],
@@ -34,9 +34,9 @@ export const projects: Project[] = [
     description:
       "Aplicacao Full Stack de e-commerce desenvolvida para gerenciamento e venda de produtos de hardware. Possui catalogo, carrinho persistente, autenticacao, upload de imagens e uma area administrativa para gerenciamento de produtos e pedidos.",
 
-    cover: "/projects/tecnozhub/cover.png",
+    cover: "/projects/tecnozhub/logo.png",
     logo: "/projects/tecnozhub/logo.png",
-    preview: "/projects/tecnozhub/preview.png",
+    preview: "/projects/tecnozhub/logo.png",
     color: "#f97316",
 
     technologies: [
@@ -62,9 +62,9 @@ export const projects: Project[] = [
     description:
       "Aplicacao web Full Stack desenvolvida para centralizar a gestao de uma barbearia. A plataforma possui areas separadas para administracao e clientes, incluindo gerenciamento de profissionais, servicos, agendamentos, pagamentos e autenticacao.",
 
-    cover: "/projects/barberhub/cover.png",
+    cover: "/projects/barberhub/logo.png",
     logo: "/projects/barberhub/logo.png",
-    preview: "/projects/barberhub/preview.png",
+    preview: "/projects/barberhub/logo.png",
     color: "#a16207",
 
     technologies: [
