@@ -55,7 +55,10 @@ export default function FeaturedProjects() {
     : `Logo do projeto ${displayedProject.title}`;
 
   return (
-    <section className="w-full px-6 py-24 sm:px-10 lg:px-16">
+    <section
+      id="projetos"
+      className="w-full px-6 py-24 sm:px-10 lg:px-16"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="mb-16">
           <span className="text-sm uppercase tracking-[0.2em]">
@@ -76,7 +79,7 @@ export default function FeaturedProjects() {
               }}
             >
               <div
-                className={`absolute inset-0 opacity-10 transition-colors duration-500`}
+                className="absolute inset-0 opacity-10 transition-colors duration-500"
                 style={{
                   backgroundColor: activeProject.color,
                 }}
@@ -90,8 +93,8 @@ export default function FeaturedProjects() {
                 }`}
               >
                 <Image
-                placeholder="empty"
-                loading="eager"
+                  placeholder="empty"
+                  loading="eager"
                   src={displayedImage}
                   alt={imageAlt}
                   width={800}
