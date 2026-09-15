@@ -1,6 +1,9 @@
 export default function Profile() {
   return (
-    <section className="w-full px-6 py-24 sm:px-10 lg:px-16">
+    <section
+      id="sobre"
+      className="w-full px-6 py-24 sm:px-10 lg:px-16"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-[1.4fr_0.6fr] lg:items-start">
           <div>
@@ -68,7 +71,7 @@ export default function Profile() {
                 Foco
               </h3>
 
-              <p className="mt-1 text-sm opacity-60">
+              <p className="mt-2 text-xl font-semibold">
                 Desenvolvimento Full Stack
               </p>
             </div>
