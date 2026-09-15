@@ -1,6 +1,9 @@
 export default function Contact() {
   return (
-    <section className="w-full px-6 py-24 sm:px-10 lg:px-16">
+    <section
+      id="contato"
+      className="w-full px-6 py-24 sm:px-10 lg:px-16"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-[1.4fr_0.6fr] lg:items-end">
           <div>
@@ -23,7 +26,7 @@ export default function Contact() {
           <div className="border-t border-black/10 pt-8 lg:border-l lg:border-t-0 lg:pl-10">
             <div className="space-y-8">
               <a
-                href="mailto:SEU_EMAIL_AQUI"
+                href="mailto:thomasnhenrique@gmail.com"
                 className="group block"
               >
                 <span className="text-sm uppercase tracking-[0.15em] opacity-40">
@@ -32,7 +35,7 @@ export default function Contact() {
 
                 <div className="mt-2 flex items-center justify-between gap-4 border-b border-black/10 pb-3">
                   <span className="text-base transition-transform duration-300 group-hover:translate-x-1 sm:text-lg">
-                    SEU_EMAIL_AQUI
+                    thomasnhenrique@gmail.com
                   </span>
 
                   <span
