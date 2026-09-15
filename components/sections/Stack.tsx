@@ -118,7 +118,10 @@ export default function Stack() {
     useState<Technology | null>(null);
 
   return (
-    <section className="w-full px-6 py-24 sm:px-10 lg:px-16">
+    <section
+      id="stack"
+      className="w-full px-6 py-24 sm:px-10 lg:px-16"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>

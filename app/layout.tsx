@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 
 import "./globals.css";
 
@@ -12,9 +12,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Thomas Henrique | Desenvolvedor Full Stack",
+  title: {
+    default: "Thomas Henrique | Desenvolvedor Full Stack",
+    template: "%s | Thomas Henrique",
+  },
+
   description:
-    "Portfolio de Thomas Henrique, Desenvolvedor Full Stack focado na criacao de aplicacoes web modernas.",
+    "Portfolio de Thomas Henrique, Desenvolvedor Full Stack. Conheca meus projetos, tecnologias e experiencias no desenvolvimento de aplicacoes web.",
+
+  keywords: [
+    "Thomas Henrique",
+    "Desenvolvedor Full Stack",
+    "Full Stack Developer",
+    "Desenvolvedor Web",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+  ],
+
+  authors: [
+    {
+      name: "Thomas Henrique",
+    },
+  ],
+
+  creator: "Thomas Henrique",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
