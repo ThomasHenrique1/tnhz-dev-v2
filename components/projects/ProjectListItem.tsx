@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FiArrowUpRight } from "react-icons/fi";
 
 import type { Project } from "@/types/project";
 
@@ -15,64 +16,70 @@ export default function ProjectListItem({
   isActive,
   onHover,
 }: ProjectListItemProps) {
+  // Fallback: se o projeto não tiver cor definida, usa o accent laranja
+  const accentColor = project.color ?? "var(--color-accent)";
+
   return (
     <Link
       href={`/projects/${project.slug}`}
       onMouseEnter={onHover}
       onFocus={onHover}
-      className="group relative border-b border-black/10 py-8 transition-all duration-300"
-      style={{
-        opacity: isActive ? 1 : 0.45,
-      }}
+      className="group relative block border-b border-border-subtle py-8 transition-colors duration-300"
     >
+      {/* Linha superior animada com a cor do projeto */}
       <span
-        className="absolute left-0 top-0 h-0.5 transition-all duration-300"
+        className="absolute left-0 top-0 h-px transition-all duration-500 ease-out"
         style={{
           width: isActive ? "100%" : "0%",
-          backgroundColor: project.color,
+          backgroundColor: accentColor,
         }}
       />
 
       <div className="flex items-start justify-between gap-6">
         <div className="space-y-3">
           <div className="flex items-center gap-4">
+            {/* Número do índice */}
             <span
-              className="text-sm font-medium tabular-nums transition-colors duration-300"
-              style={{
-                color: isActive ? project.color : "inherit",
-              }}
+              className={`text-sm font-medium tabular-nums transition-colors duration-300 ${
+                isActive ? "" : "text-text-muted"
+              }`}
+              style={isActive ? { color: accentColor } : undefined}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
 
+            {/* Título */}
             <h3
-              className="text-3xl font-semibold transition-colors duration-300 sm:text-4xl"
-              style={{
-                color: isActive ? project.color : "inherit",
-              }}
+              className={`text-3xl font-semibold transition-colors duration-300 sm:text-4xl ${
+                isActive ? "" : "text-text-primary"
+              }`}
+              style={isActive ? { color: accentColor } : undefined}
             >
               {project.title}
             </h3>
           </div>
 
-          <p className="max-w-md text-sm leading-relaxed opacity-70 sm:text-base">
+          {/* Descrição */}
+          <p
+            className={`max-w-md text-sm leading-relaxed transition-colors duration-300 sm:text-base ${
+              isActive ? "text-text-secondary" : "text-text-muted"
+            }`}
+          >
             {project.shortDescription}
           </p>
         </div>
 
-        <span
-          className={`mt-2 text-xl transition-all duration-300 ${
-            isActive
-              ? "translate-x-1 opacity-100"
-              : "translate-x-0 opacity-50 group-hover:translate-x-1 group-hover:opacity-100"
-          }`}
+        {/* Seta — agora com React Icons */}
+        <FiArrowUpRight
+          size={22}
           aria-hidden="true"
-          style={{
-            color: isActive ? project.color : "inherit",
-          }}
-        >
-          ↗
-        </span>
+          className={`mt-2 shrink-0 transition-all duration-300 ${
+            isActive
+              ? "translate-x-1 -translate-y-0.5 opacity-100"
+              : "translate-x-0 opacity-40 group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:opacity-100"
+          }`}
+          style={isActive ? { color: accentColor } : undefined}
+        />
       </div>
     </Link>
   );
