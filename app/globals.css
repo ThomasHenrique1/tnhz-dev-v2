@@ -1,14 +1,37 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================
+   1. Tema do Tailwind v4 — gera as classes utilitárias
+   ============================================ */
+@theme {
+  /* Cores de fundo */
+  --color-bg-primary: #080808;
+  --color-bg-secondary: #0f0f0f;
+
+  /* Cores de texto */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+
+  /* Bordas */
+  --color-border-subtle: #ffffff1a;
+
+  /* Accent */
+  --color-accent: #ff6b00;
+  --color-accent-hover: #ff8533;
+  --color-accent-dark: #cc5500;
+
+  /* Font */
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+/* ============================================
+   2. Reset / base
+   ============================================ */
+:root {
+  --foreground: #ffffff;
+  --background: #080808;
+  --accent: #ff6b00;
 }
 
 * {
@@ -17,10 +40,12 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
@@ -50,11 +75,11 @@ img {
 }
 
 ::selection {
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--accent);
+  color: #ffffff;
 }
 
 :focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
