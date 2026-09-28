@@ -15,6 +15,6 @@ export const profile = {
 
   social: {
     github: "https://github.com/ThomasHenrique1",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/thomas-henrique12/",
   },
 };
