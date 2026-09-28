@@ -16,7 +16,6 @@ export default function ProjectListItem({
   isActive,
   onHover,
 }: ProjectListItemProps) {
-  // Fallback: se o projeto não tiver cor definida, usa o accent laranja
   const accentColor = project.color ?? "var(--color-accent)";
 
   return (
@@ -24,24 +23,26 @@ export default function ProjectListItem({
       href={`/projects/${project.slug}`}
       onMouseEnter={onHover}
       onFocus={onHover}
-      className="group relative block border-b border-border-subtle py-8 transition-colors duration-300"
+      className={`group relative block border-b border-border-subtle py-6 transition-colors duration-300 sm:py-8 ${
+        isActive ? "" : ""
+      }`}
     >
-      {/* Linha superior animada com a cor do projeto */}
+      {/* Linha superior animada (GPU-friendly) */}
       <span
-        className="absolute left-0 top-0 h-px transition-all duration-500 ease-out"
-        style={{
-          width: isActive ? "100%" : "0%",
-          backgroundColor: accentColor,
-        }}
+        className={`absolute left-0 top-0 h-0.5 w-full origin-left transition-transform duration-300 ease-out ${
+          isActive ? "scale-x-100" : "scale-x-0"
+        }`}
+        style={{ backgroundColor: accentColor }}
+        aria-hidden="true"
       />
 
-      <div className="flex items-start justify-between gap-6">
-        <div className="space-y-3">
-          <div className="flex items-center gap-4">
-            {/* Número do índice */}
+      <div className="flex items-start justify-between gap-4 sm:gap-6">
+        <div className="min-w-0 space-y-3">
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Número do índice — usa secondary no inativo pra não sumir */}
             <span
-              className={`text-sm font-medium tabular-nums transition-colors duration-300 ${
-                isActive ? "" : "text-text-muted"
+              className={`shrink-0 text-sm font-medium tabular-nums transition-colors duration-300 ${
+                isActive ? "" : "text-text-secondary"
               }`}
               style={isActive ? { color: accentColor } : undefined}
             >
@@ -50,7 +51,7 @@ export default function ProjectListItem({
 
             {/* Título */}
             <h3
-              className={`text-3xl font-semibold transition-colors duration-300 sm:text-4xl ${
+              className={`min-w-0 text-2xl font-semibold leading-tight transition-colors duration-300 sm:text-4xl ${
                 isActive ? "" : "text-text-primary"
               }`}
               style={isActive ? { color: accentColor } : undefined}
@@ -69,17 +70,30 @@ export default function ProjectListItem({
           </p>
         </div>
 
-        {/* Seta — agora com React Icons */}
-        <FiArrowUpRight
-          size={22}
-          aria-hidden="true"
-          className={`mt-2 shrink-0 transition-all duration-300 ${
+        {/* Seta dentro de um círculo — alvo visual claro */}
+        <div
+          className={`mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 sm:mt-2 sm:h-10 sm:w-10 ${
             isActive
-              ? "translate-x-1 -translate-y-0.5 opacity-100"
-              : "translate-x-0 opacity-40 group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:opacity-100"
+              ? "border-transparent"
+              : "border-border-subtle group-hover:border-accent"
           }`}
-          style={isActive ? { color: accentColor } : undefined}
-        />
+          style={
+            isActive
+              ? { backgroundColor: `${accentColor}1A` }
+              : undefined
+          }
+          aria-hidden="true"
+        >
+          <FiArrowUpRight
+            size={17}
+            className={`transition-all duration-300 sm:size-4.5 ${
+              isActive
+                ? "translate-x-0.5 -translate-y-0.5"
+                : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            }`}
+            style={isActive ? { color: accentColor } : undefined}
+          />
+        </div>
       </div>
     </Link>
   );
