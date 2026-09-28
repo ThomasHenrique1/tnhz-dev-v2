@@ -1,47 +1,88 @@
 "use client";
 
 import { useState } from "react";
+import {
+  FiGlobe,
+  FiServer,
+} from "react-icons/fi";
+import {
+  SiDocker,
+  SiGit,
+  SiJavascript,
+  SiMysql,
+  SiNodedotjs,
+  SiNextdotjs,
+  SiPostgresql,
+  SiReact,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+import type { IconType } from "react-icons";
 
 interface Technology {
   name: string;
   description: string;
+  icon: IconType;
+  color?: string;
 }
 
 const frontend: Technology[] = [
   {
     name: "Next.js",
     description: "Framework principal utilizado nos meus projetos web.",
+    icon: SiNextdotjs,
+    color: "#FFFFFF",
   },
   {
     name: "React",
     description: "Biblioteca utilizada para construção de interfaces.",
+    icon: SiReact,
+    color: "#61DAFB",
   },
   {
     name: "TypeScript",
-    description: "Utilizado para criar aplicações mais previsíveis e organizadas.",
+    description:
+      "Utilizado para criar aplicações mais previsíveis e organizadas.",
+    icon: SiTypescript,
+    color: "#3178C6",
   },
   {
     name: "JavaScript",
     description: "Base de grande parte das aplicações que desenvolvo.",
+    icon: SiJavascript,
+    color: "#F7DF1E",
   },
   {
     name: "Tailwind CSS",
-    description: "Utilizado para construir interfaces de forma rápida e consistente.",
+    description:
+      "Utilizado para construir interfaces de forma rápida e consistente.",
+    icon: SiTailwindcss,
+    color: "#06B6D4",
   },
 ];
 
 const backend: Technology[] = [
   {
     name: "Node.js",
-    description: "Utilizado no desenvolvimento de aplicações e serviços backend.",
+    description:
+      "Utilizado no desenvolvimento de aplicações e serviços backend.",
+    icon: SiNodedotjs,
+    color: "#68A063",
   },
   {
     name: "REST APIs",
-    description: "Utilizadas para comunicação entre diferentes partes das aplicações.",
+    description:
+      "Utilizadas para comunicação entre diferentes partes das aplicações.",
+    icon: FiGlobe,
+    color: "#FFFFFF",
   },
   {
     name: "Server Actions",
-    description: "Utilizadas para executar operações no servidor em aplicações Next.js.",
+    description:
+      "Utilizadas para executar operações no servidor em aplicações Next.js.",
+    icon: FiServer,
+    color: "#FFFFFF",
   },
 ];
 
@@ -49,73 +90,56 @@ const dataAndTools: Technology[] = [
   {
     name: "PostgreSQL",
     description: "Banco de dados utilizado em aplicações Full Stack.",
+    icon: SiPostgresql,
+    color: "#336791",
   },
   {
     name: "Supabase",
-    description: "Utilizado para banco de dados, autenticação e serviços backend.",
+    description:
+      "Utilizado para banco de dados, autenticação e serviços backend.",
+    icon: SiSupabase,
+    color: "#3ECF8E",
+  },
+  {
+    name: "MySQL",
+    description: "Banco de dados relacional utilizado em projetos web.",
+    icon: SiMysql,
+    color: "#4479A1",
   },
   {
     name: "Git",
-    description: "Utilizado para versionamento e organização dos projetos.",
+    description:
+      "Utilizado para versionamento e organização dos projetos.",
+    icon: SiGit,
+    color: "#F05032",
   },
   {
     name: "Docker",
-    description: "Utilizado para criação e gerenciamento de ambientes de desenvolvimento.",
+    description:
+      "Utilizado para criação e gerenciamento de ambientes de desenvolvimento.",
+    icon: SiDocker,
+    color: "#2496ED",
   },
 ];
 
-function TechnologyList({
-  technologies,
-  activeTechnology,
-  onSelect,
-}: {
-  technologies: Technology[];
-  activeTechnology: Technology | null;
-  onSelect: (technology: Technology) => void;
-}) {
-  return (
-    <div className="space-y-1">
-      {technologies.map((technology) => {
-        const isActive = activeTechnology?.name === technology.name;
-
-        return (
-          <button
-            key={technology.name}
-            type="button"
-            onMouseEnter={() => onSelect(technology)}
-            onFocus={() => onSelect(technology)}
-            className="group flex w-full items-center justify-between border-b border-black/10 py-4 text-left transition-all duration-300"
-          >
-            <span
-              className={`text-lg transition-all duration-300 sm:text-xl ${
-                isActive
-                  ? "translate-x-2 font-medium"
-                  : "opacity-70 group-hover:translate-x-2 group-hover:opacity-100"
-              }`}
-            >
-              {technology.name}
-            </span>
-
-            <span
-              className={`text-sm transition-all duration-300 ${
-                isActive
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-50"
-              }`}
-              aria-hidden="true"
-            >
-              ↗
-            </span>
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
 export default function Stack() {
   const [activeTechnology, setActiveTechnology] =
-    useState<Technology | null>(null);
+    useState<Technology | null>(frontend[0] ?? null);
+
+  const groups = [
+    {
+      label: "Frontend",
+      technologies: frontend,
+    },
+    {
+      label: "Backend",
+      technologies: backend,
+    },
+    {
+      label: "Dados & Ferramentas",
+      technologies: dataAndTools,
+    },
+  ];
 
   return (
     <section
@@ -125,32 +149,39 @@ export default function Stack() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
-            <span className="text-sm uppercase tracking-[0.2em]">
-              Stack
-            </span>
+            <div className="flex items-center gap-3">
+              <span
+                className="h-px w-8 bg-accent"
+                aria-hidden="true"
+              />
 
-            <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-tight sm:text-5xl">
+              <span className="text-sm uppercase tracking-[0.2em] text-text-secondary">
+                Stack
+              </span>
+            </div>
+
+            <h2 className="mt-4 max-w-xl text-4xl font-semibold leading-tight text-text-primary sm:text-5xl">
               Ferramentas que uso para construir.
             </h2>
 
-            <p className="mt-6 max-w-md text-base leading-relaxed opacity-60 sm:text-lg">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-text-secondary sm:text-lg">
               Tecnologias que fazem parte dos projetos que desenvolvo e da
               forma como gosto de trabalhar.
             </p>
 
             <div className="mt-12 min-h-25">
               {activeTechnology ? (
-                <div className="border-l-2 border-black/20 pl-5">
-                  <span className="text-sm uppercase tracking-[0.15em] opacity-40">
+                <div className="border-l-2 border-accent pl-5">
+                  <span className="text-sm uppercase tracking-[0.15em] text-accent">
                     {activeTechnology.name}
                   </span>
 
-                  <p className="mt-2 max-w-sm text-sm leading-relaxed opacity-60">
+                  <p className="mt-2 max-w-sm text-sm leading-relaxed text-text-secondary">
                     {activeTechnology.description}
                   </p>
                 </div>
               ) : (
-                <p className="text-sm opacity-40">
+                <p className="text-sm text-text-muted">
                   Passe o cursor sobre uma tecnologia para saber mais.
                 </p>
               )}
@@ -158,61 +189,96 @@ export default function Stack() {
           </div>
 
           <div className="grid gap-12 md:grid-cols-3">
-            <div>
-              <span className="text-sm uppercase tracking-[0.15em] opacity-40">
-                Frontend
-              </span>
+            {groups.map((group) => (
+              <div key={group.label}>
+                <span className="text-sm uppercase tracking-[0.15em] text-text-muted">
+                  {group.label}
+                </span>
 
-              <div className="mt-5">
-                <TechnologyList
-                  technologies={frontend}
-                  activeTechnology={activeTechnology}
-                  onSelect={setActiveTechnology}
-                />
+                <div className="mt-5 space-y-1">
+                  {group.technologies.map((technology) => {
+                    const Icon = technology.icon;
+                    const isActive =
+                      activeTechnology?.name === technology.name;
+
+                    return (
+                      <button
+                        key={technology.name}
+                        type="button"
+                        onMouseEnter={() =>
+                          setActiveTechnology(technology)
+                        }
+                        onFocus={() =>
+                          setActiveTechnology(technology)
+                        }
+                        className="group flex w-full items-center gap-3 border-b border-border-subtle py-4 text-left transition-colors duration-300"
+                      >
+                        <Icon
+                          size={18}
+                          aria-hidden="true"
+                          className="shrink-0 text-text-muted transition-all duration-300 group-hover:translate-x-1"
+                          style={
+                            isActive
+                              ? {
+                                  color:
+                                    technology.color ??
+                                    "var(--color-accent)",
+                                }
+                              : undefined
+                          }
+                        />
+
+                        <span
+                          className={`flex-1 text-lg transition-all duration-300 sm:text-xl ${
+                            isActive
+                              ? "translate-x-1 font-medium text-accent"
+                              : "text-text-secondary group-hover:translate-x-1 group-hover:text-text-primary"
+                          }`}
+                        >
+                          {technology.name}
+                        </span>
+
+                        <span
+                          className={`text-sm transition-all duration-300 ${
+                            isActive
+                              ? "translate-x-0 opacity-50"
+                              : "-translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-50"
+                          }`}
+                          aria-hidden="true"
+                        >
+                          ↗
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-
-            <div>
-              <span className="text-sm uppercase tracking-[0.15em] opacity-40">
-                Backend
-              </span>
-
-              <div className="mt-5">
-                <TechnologyList
-                  technologies={backend}
-                  activeTechnology={activeTechnology}
-                  onSelect={setActiveTechnology}
-                />
-              </div>
-            </div>
-
-            <div>
-              <span className="text-sm uppercase tracking-[0.15em] opacity-40">
-                Dados & Ferramentas
-              </span>
-
-              <div className="mt-5">
-                <TechnologyList
-                  technologies={dataAndTools}
-                  activeTechnology={activeTechnology}
-                  onSelect={setActiveTechnology}
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-20 border-t border-black/10 pt-8">
+        <div className="mt-20 border-t border-border-subtle pt-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <span className="text-sm uppercase tracking-[0.15em] opacity-40">
+            <span className="text-sm uppercase tracking-[0.15em] text-text-muted">
               Também já trabalhei com
             </span>
 
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm opacity-60">
-              <span>Java</span>
-              <span>Python</span>
-              <span>PHP</span>
-              <span>MySQL</span>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-text-secondary">
+              <span className="transition-colors duration-300 hover:text-accent">
+                Java
+              </span>
+
+              <span className="transition-colors duration-300 hover:text-accent">
+                Python
+              </span>
+
+              <span className="transition-colors duration-300 hover:text-accent">
+                PHP
+              </span>
+
+              <span className="transition-colors duration-300 hover:text-accent">
+                jQuery
+              </span>
             </div>
           </div>
         </div>

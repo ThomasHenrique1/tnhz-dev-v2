@@ -14,7 +14,7 @@ export const projects: Project[] = [
     cover: "/projects/sistema-de-leads/logo.png",
     logo: "/projects/sistema-de-leads/logo.png",
     preview: "/projects/sistema-de-leads/logo.png",
-    color: "#2563eb",
+    color: "#10B981",
 
     technologies: ["Next.js", "React", "TypeScript", "Supabase"],
 
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     cover: "/projects/tecnozhub/logo.png",
     logo: "/projects/tecnozhub/logo.png",
     preview: "/projects/tecnozhub/logo.png",
-    color: "#f97316",
+    color: "#2563EB",
 
     technologies: [
       "Next.js",
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     cover: "/projects/barberhub/logo.png",
     logo: "/projects/barberhub/logo.png",
     preview: "/projects/barberhub/logo.png",
-    color: "#a16207",
+    color: "#F59E0B",
 
     technologies: [
       "Next.js",

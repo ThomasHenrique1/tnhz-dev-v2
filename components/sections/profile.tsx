@@ -1,95 +1,97 @@
+const facts = [
+  {
+    number: "01",
+    label: "Formação",
+    value: "Ciência da Computação",
+  },
+  {
+    number: "02",
+    label: "Foco",
+    value: "Desenvolvimento Full Stack",
+  },
+  {
+    number: "03",
+    label: "Abordagem",
+    value: "Aprender construindo",
+  },
+];
+
 export default function Profile() {
   return (
     <section
       id="sobre"
-      className="w-full px-6 py-24 sm:px-10 lg:px-16"
+      className="w-full px-6 py-20 sm:px-10 sm:py-24 lg:px-16"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-16 lg:grid-cols-[1.4fr_0.6fr] lg:items-start">
+        <div className="grid gap-14 lg:grid-cols-[1.4fr_0.6fr] lg:items-start lg:gap-16">
+          {/* Coluna principal */}
           <div>
-            <span className="text-sm uppercase tracking-[0.2em]">
-              Sobre mim
-            </span>
+            {/* Rótulo */}
+            <div className="flex items-center gap-3">
+              <span
+                className="h-px w-6 bg-accent sm:w-8"
+                aria-hidden="true"
+              />
 
-            <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+              <span className="text-xs uppercase tracking-[0.16em] text-text-secondary sm:text-sm sm:tracking-[0.2em]">
+                Sobre mim
+              </span>
+            </div>
+
+            <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight text-text-primary sm:text-5xl">
               Sempre fui curioso com tecnologia. Hoje, transformo essa
               curiosidade em coisas que posso construir.
             </h2>
 
-            <div className="mt-10 max-w-3xl space-y-6 text-base leading-relaxed opacity-70 sm:text-lg">
+            <div className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-text-secondary sm:mt-10 sm:space-y-6 sm:text-lg">
               <p>
-                Olá, eu sou o Thomas.
-              </p>
-
-              <p>
-                Gosto de entender como as coisas funcionam, explorar
-                possibilidades e transformar ideias em algo que realmente
-                funciona. Foi essa curiosidade que me aproximou cada vez mais
-                da tecnologia e acabou me levando à Ciência da Computação.
+                Sou o Thomas, formado em Ciência da Computação e{" "}
+                <strong className="font-medium text-text-primary">
+                  desenvolvedor Full Stack
+                </strong>
+                . Gosto de entender como as coisas funcionam, explorar
+                possibilidades e transformar ideias em algo que funciona de
+                verdade.
               </p>
 
               <p>
                 No desenvolvimento, gosto de ir além da interface e entender
-                como uma aplicação funciona como um todo. Gosto de pegar uma
-                ideia, entender o problema e descobrir o que é necessário para
-                transformá-la em algo que possa ser utilizado de verdade.
+                a aplicação como um todo — pegar uma ideia, entender o
+                problema e descobrir o que é necessário para transformá-la em
+                algo utilizável.
               </p>
 
               <p>
-                Grande parte do que aprendo acontece enquanto construo. Gosto
-                de experimentar tecnologias, testar abordagens diferentes e
-                encontrar novas formas de resolver problemas. Cada projeto
-                acaba sendo uma oportunidade para aprender algo novo e melhorar
-                a forma como desenvolvo.
-              </p>
-
-              <p>
-                Ao longo desse processo, já construí projetos envolvendo
-                gerenciamento de leads, e-commerce e sistemas de agendamento,
-                explorando diferentes tecnologias e desafios em cada um deles.
+                <strong className="font-medium text-text-primary">
+                  Aprendo principalmente construindo.
+                </strong>{" "}
+                Cada projeto é uma oportunidade de experimentar tecnologias,
+                testar abordagens e melhorar a forma como desenvolvo — de
+                gerenciamento de leads a e-commerce e sistemas de agendamento.
               </p>
             </div>
           </div>
 
-          <div className="grid gap-8 border-t border-black/10 pt-8 lg:border-t-0 lg:border-l lg:pl-10">
-            <div>
-              <span className="text-sm font-medium opacity-50">01</span>
+          {/* Coluna lateral */}
+          <div className="grid gap-7 border-t border-border-subtle pt-8 sm:gap-8 lg:border-l lg:border-t-0 lg:pl-10">
+            {facts.map((fact) => (
+              <div key={fact.number} className="group">
+                <span className="text-sm font-medium tabular-nums text-text-muted transition-colors duration-300 group-hover:text-accent">
+                  {fact.number}
+                </span>
 
-              <h3 className="mt-2 text-xl font-semibold">
-                Formação
-              </h3>
+                <h3 className="mt-2 text-xs uppercase tracking-[0.15em] text-text-muted sm:text-sm">
+                  {fact.label}
+                </h3>
 
-              <p className="mt-1 text-sm opacity-60">
-                Ciência da Computação
-              </p>
-            </div>
-
-            <div>
-              <span className="text-sm font-medium opacity-50">02</span>
-
-              <h3 className="mt-2 text-xl font-semibold">
-                Foco
-              </h3>
-
-              <p className="mt-2 text-xl font-semibold">
-                Desenvolvimento Full Stack
-              </p>
-            </div>
-
-            <div>
-              <span className="text-sm font-medium opacity-50">03</span>
-
-              <h3 className="mt-2 text-xl font-semibold">
-                Abordagem
-              </h3>
-
-              <p className="mt-1 text-sm opacity-60">
-                Aprender construindo
-              </p>
-            </div>
+                <p className="mt-1 text-base font-medium text-text-primary sm:text-lg">
+                  {fact.value}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
-}
+} 

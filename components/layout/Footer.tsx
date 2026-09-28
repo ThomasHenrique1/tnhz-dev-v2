@@ -29,7 +29,7 @@ export default function Footer() {
               <Link
                 href="#home"
                 aria-label="Thomas Henrique - Inicio"
-                className="group inline-flex items-center gap-2 transition-opacity duration-300 hover:opacity-90"
+                className="inline-flex transition-opacity duration-300 hover:opacity-80"
               >
                 <Image
                   src="/favicon.png"
@@ -38,7 +38,6 @@ export default function Footer() {
                   height={60}
                   className="h-auto w-20 object-contain sm:w-24"
                 />
-
               </Link>
 
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-text-secondary">
@@ -84,12 +83,10 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       className="group flex w-fit items-center gap-2 text-sm text-text-secondary transition-colors duration-300 hover:text-accent"
                     >
-                      {/* Ícone da plataforma */}
                       <Icon size={16} className="shrink-0" />
 
                       {item.label}
 
-                      {/* Seta que desliza no hover */}
                       <FiArrowUpRight
                         size={14}
                         className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
